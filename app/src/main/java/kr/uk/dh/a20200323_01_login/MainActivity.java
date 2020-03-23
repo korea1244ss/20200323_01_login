@@ -2,6 +2,7 @@ package kr.uk.dh.a20200323_01_login;
 
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,20 @@ public class MainActivity extends BaseActivity {
 
 //        체크박스에 체크가 될떄 (변화가 있을때) 마다
 //        체크 여부 저장.
+        biding.sigUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                biding.sigUpBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext,SingUpActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        });
 
         biding.idCheckBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
