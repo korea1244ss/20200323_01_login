@@ -47,12 +47,27 @@ public class SingUpActivity extends BaseActivity {
                         try {
                             int code = json.getInt("code");
                             if (code == 200){
+//                                회원 가입 성공 케이스
+                                JSONObject data = json.getJSONObject("data");
+                                JSONObject user = data.getJSONObject("user");
+
+                                final String name = user.getString("name");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(mContext, String.format("%s님 환영합니다", name), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+
 
                             }
                             else {
                                final String message = json.getString("message");
                                runOnUiThread(new Runnable() {
                                    @Override
+//                                   회원 성공 실패 케이스
                                    public void run() {
                                        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
                                    }
