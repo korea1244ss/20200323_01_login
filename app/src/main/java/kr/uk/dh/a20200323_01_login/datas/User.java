@@ -1,5 +1,8 @@
 package kr.uk.dh.a20200323_01_login.datas;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -8,7 +11,33 @@ public class User implements Serializable {
     private String loginId;
     private String name;
     private String phoneNum;
-    private String memo;
+    private String meme;
+
+    public static User getUserFromJson(JSONObject object){
+        User user = new User();
+
+        try {
+            user.id = object.getInt("id");
+            user.loginId = object.getString("loginName");
+            user.name = object.getString("name");
+            user.phoneNum = object.getString("phoneNum");
+            user.meme = object.getString("meme");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+
+    }
+
+    public User(int id, String loginId, String name, String phoneNum, String meme) {
+        this.id = id;
+        this.loginId = loginId;
+        this.name = name;
+        this.phoneNum = phoneNum;
+        this.meme = meme;
+
+    }
 
     public int getId() {
         return id;
@@ -42,13 +71,15 @@ public class User implements Serializable {
         this.phoneNum = phoneNum;
     }
 
-    public String getMemo() {
-        return memo;
+    public String getMeme() {
+        return meme;
     }
 
-    public void setMemo(String memo) {
-        this.memo = memo;
+    public void setMeme(String meme) {
+        this.meme = meme;
     }
+
+
 
     public User() {
     }
