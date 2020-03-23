@@ -13,6 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import kr.uk.dh.a20200323_01_login.databinding.ActivityMainBinding;
+import kr.uk.dh.a20200323_01_login.datas.User;
 import kr.uk.dh.a20200323_01_login.utils.ContextUtil;
 import kr.uk.dh.a20200323_01_login.utils.ServerUtil;
 
@@ -99,13 +100,15 @@ public class MainActivity extends BaseActivity {
                             JSONObject data = json.getJSONObject("data");
                             JSONObject user = data.getJSONObject("user");
                             String  token = data.getString("token");
-                           final String name = user.getString("name");
-                           final String phone = user.getString("phone");
+//                           final String name = user.getString("name");
+//                           final String phone = user.getString("phone");
+
+                            final User loginUser = User.getUserFromJson(user);
 
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(mContext,String.format("%s / %s ",name,phone), Toast.LENGTH_LONG).show();
+                                    Toast.makeText(mContext,String.format("%s / %s ",loginUser.getName(),loginUser.getPhoneNum()), Toast.LENGTH_LONG).show();
                                 }
                             });
 
