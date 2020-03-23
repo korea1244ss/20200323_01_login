@@ -3,7 +3,7 @@ package kr.uk.dh.a20200323_01_login.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class ContextTuil {
+public class ContextUtil {
 
 //    메모장파일 처럼 데이터를 저장할 공간의 이름을 쓸 변수
 
@@ -11,6 +11,9 @@ public class ContextTuil {
 
 //    항목명도 자동완성 지원할수 있또록 미리 변수화
     private static final String EMAIL = "EMAIL";
+
+    private static final String ID_CHECK = "ID_CHECK";
+//                ContextUtil을 이용해서, 체크 여부 저장
 
 //    해당 항목의 값을 저장(setter) / 조회(getter) 하는 메쏘드 두개.
 
@@ -40,6 +43,14 @@ public class ContextTuil {
 
 
     }
+    public static void setIdCheck(Context context, Boolean isCheck) {
+        SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        pref.edit().putBoolean(ID_CHECK, isCheck).apply();
+    }
+    public static boolean isIdCheck(Context context) {
+        SharedPreferences pref = context.getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        return pref.getBoolean(ID_CHECK,true);
 
+    }
 
 }
