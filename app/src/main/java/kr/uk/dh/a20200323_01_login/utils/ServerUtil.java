@@ -25,7 +25,7 @@ public class ServerUtil {
         void onResponse(JSONObject json);
     }
 //    서버 호스트 주소를 편하게 가져다 쓰려고 변수로 저장.
-    private static final String BASE_URL = "http://192.168.0.236:5000";
+    private static final String BASE_URL = "http://172.30.1.49:5000";
 
 //    로그인 요청 기능 메쏘드
 //    파라미터 기본구조 : 어떤 화면에서? 어떤응답처리을할지? 변수로
@@ -55,6 +55,7 @@ public class ServerUtil {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 //                연결 실패 처리
+                Log.e("서버연결실패","연결안됨!");
 
             }
 
